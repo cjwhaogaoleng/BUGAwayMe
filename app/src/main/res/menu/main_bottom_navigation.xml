@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="首页"
+        android:id="@+id/main_menu_home"
+        android:icon="@drawable/selector_main_menu_home" />
+    <item
+        android:title="交易"
+        android:id="@+id/main_menu_shopping"
+        android:icon="@drawable/selector_main_menu_shop" />
+    <item
+        android:title="消息"
+        android:id="@+id/main_menu_message"
+        android:icon="@drawable/selector_main_menu_message" />
+    <item
+        android:title="我的"
+        android:id="@+id/main_menu_mine"
+        android:icon="@drawable/selector_main_menu_mine" />
+
+</menu>

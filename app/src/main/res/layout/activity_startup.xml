@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    >
+
+
+    <ImageView
+        android:layout_width="124dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="135dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_app"
+
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="67dp"
+        android:gravity="center_horizontal"
+        android:text="畅玩快乐游戏世界"
+        android:textColor="@color/color_blue_text_startup_start"
+        android:textSize="35dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:layout_marginTop="205dp">
+
+        <Button
+            style="@style/my_button_style"
+            android:layout_width="111dp"
+            android:layout_height="47dp"
+            android:text="注册"
+            android:layout_marginEnd="73dp"
+            android:id="@+id/startup_bt_register"
+            />
+
+        <Button
+            style="@style/my_button_style"
+            android:layout_width="111dp"
+            android:layout_height="47dp"
+            android:text="登录"
+            android:id="@+id/startup_bt_login"/>
+    </LinearLayout>
+
+
+</LinearLayout>
