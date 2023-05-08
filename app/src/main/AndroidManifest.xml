@@ -15,6 +15,9 @@
         android:theme="@style/Theme.BUGAwayMe"
         tools:targetApi="31">
         <activity
+            android:name=".tempTool.PersonInformationActivity"
+            android:exported="false" />
+        <activity
             android:name=".tempTool.WebSocketActivity"
             android:exported="false" />
         <activity

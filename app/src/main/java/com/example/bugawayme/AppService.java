@@ -30,4 +30,15 @@ public interface AppService {
 
 
 
+    @Headers("Authorization:8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92")
+    @POST("login")
+    @FormUrlEncoded
+    Call<ResponseBody> goodAdding(@Field("token") String token,
+                                @Field("name") String name,
+                                @Field("price") int price,
+                                @Field("category") String category,
+                                @Field("stock") int stock,
+                                @Field("description") String description,
+                                @Field("image") String image);
+
 }
