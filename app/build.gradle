@@ -62,11 +62,16 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
     def room_version = "2.2.0-alpha01"
-
     implementation "androidx.room:room-runtime:$room_version"
     annotationProcessor "androidx.room:room-compiler:$room_version"//room处理器
 
     implementation 'org.java-websocket:Java-WebSocket:1.5.2'
+
+    implementation 'com.google.code.gson:gson:2.8.9'
+
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+
 
 
 }
