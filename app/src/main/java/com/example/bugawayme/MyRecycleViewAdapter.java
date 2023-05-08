@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.bugawayme.data.RecycleViewData;
-import com.example.bugawayme.mainFragment.MineFragment;
 
 import java.util.List;
 
