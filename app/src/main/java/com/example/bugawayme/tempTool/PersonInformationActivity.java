@@ -3,6 +3,7 @@ package com.example.bugawayme.tempTool;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.bugawayme.R;
 
@@ -15,5 +16,9 @@ public class PersonInformationActivity extends AppCompatActivity {
 
 
 
+    }
+
+    public void back(View view) {
+        finish();
     }
 }
