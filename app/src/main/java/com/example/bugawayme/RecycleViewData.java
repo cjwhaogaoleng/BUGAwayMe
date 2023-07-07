@@ -1,4 +1,4 @@
-package com.example.bugawayme.data;
+package com.example.bugawayme;
 
 public class RecycleViewData {
 

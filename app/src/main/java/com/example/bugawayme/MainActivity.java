@@ -3,21 +3,17 @@ package com.example.bugawayme;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.viewpager.widget.ViewPager;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 
-import com.example.bugawayme.loginFragment.PasswordFragment;
-import com.example.bugawayme.loginFragment.VerificationFragment;
 import com.example.bugawayme.mainFragment.HomeFragment;
 import com.example.bugawayme.mainFragment.MessageFragment;
 import com.example.bugawayme.mainFragment.MineFragment;
 import com.example.bugawayme.mainFragment.ShopFragment;
+import com.example.bugawayme.myViewPager.BannerViewPager;
+import com.example.bugawayme.myViewPager.CompatibleViewPager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
@@ -25,18 +21,18 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity  {
 
-    ViewPager2 viewPager2;
+    ViewPager viewPager;
     BottomNavigationView bottomNavigationView;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        
         intiView();
         initPager();
-
-
-
 
     }
 
@@ -49,9 +45,29 @@ public class MainActivity extends AppCompatActivity  {
             list.add(MineFragment.newInstance("", ""));
 
             MyFragmentPagerAdapter myFragmentPagerAdapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), getLifecycle(), list);
+            MyFragmentPagerTabAdapter myFragmentPagerTabAdapter = new MyFragmentPagerTabAdapter(getSupportFragmentManager(), list, null);
 
-            viewPager2.setAdapter(myFragmentPagerAdapter);
-            viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+//            viewPager.setAdapter(myFragmentPagerAdapter);
+            viewPager.setAdapter(myFragmentPagerTabAdapter);
+//            viewPager.set
+            viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                @Override
+                public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+                }
+
+                @Override
+                public void onPageSelected(int position) {
+                    changePage(position);
+
+                }
+
+                @Override
+                public void onPageScrollStateChanged(int state) {
+
+                }
+            });
+            /*viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
                 @Override
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                     super.onPageScrolled(position, positionOffset, positionOffsetPixels);
@@ -70,21 +86,22 @@ public class MainActivity extends AppCompatActivity  {
                 }
             });
 
+             */
             bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     switch (item.getItemId()) {
                         case R.id.main_menu_home:
-                            viewPager2.setCurrentItem(0);
+                            viewPager.setCurrentItem(0);
                             break;
                         case R.id.main_menu_shopping:
-                            viewPager2.setCurrentItem(1);
+                            viewPager.setCurrentItem(1);
                             break;
                         case R.id.main_menu_message:
-                            viewPager2.setCurrentItem(2);
+                            viewPager.setCurrentItem(2);
                             break;
                         case R.id.main_menu_mine:
-                            viewPager2.setCurrentItem(3);
+                            viewPager.setCurrentItem(3);
                             break;
 
                     }
@@ -116,7 +133,7 @@ public class MainActivity extends AppCompatActivity  {
     }
 
     private void intiView() {
-        viewPager2 = findViewById(R.id.vp_main);
+        viewPager = findViewById(R.id.vp_main);
         bottomNavigationView = findViewById(R.id.main_bt_navigation);
 
     }

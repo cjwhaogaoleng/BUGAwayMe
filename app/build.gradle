@@ -37,9 +37,16 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+
+    dataBinding {
+        enabled = true
+    }
+
+
 }
 
 dependencies {
+
 
 
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -61,17 +68,25 @@ dependencies {
     implementation 'com.jakewharton:butterknife:10.2.3'
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.3'
 
-    def room_version = "2.2.0-alpha01"
-    implementation "androidx.room:room-runtime:$room_version"
+    def room_version = '2.5.0-alpha01'
+
+    //noinspection GradleDependency
+    implementation 'androidx.room:room-runtime:2.4.2'
     annotationProcessor "androidx.room:room-compiler:$room_version"//room处理器
 
     implementation 'org.java-websocket:Java-WebSocket:1.5.2'
 
-    implementation 'com.google.code.gson:gson:2.8.9'
+    implementation 'com.google.code.gson:gson:2.9.0'
 
-    implementation 'io.reactivex.rxjava3:rxjava:3.0.0'
-    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.1.6'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.2'
+//圆形头像
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
+    implementation 'com.mig35:carousellayoutmanager:1.4.6'
+
+//    //自动轮播
+//    implementation 'com.zhpan.library:bannerview:latestVersion'
 
 
 }

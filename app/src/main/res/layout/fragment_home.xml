@@ -1,14 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".mainFragment.HomeFragment">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+
+    </data>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:orientation="vertical"
+        android:padding="30dp"
+        tools:context=".mainFragment.HomeFragment">
 
-</FrameLayout>
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_message"
+            android:layout_width="match_parent"
+            android:layout_height="138dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_normal_header_orange">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/tv_message_toolbar"
+                    style="@style/my_text_white_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="41dp"
+                    android:text="首页" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="36dp"
+                            android:layout_height="42.2dp"
+                            android:src="@drawable/ic_app_noback"
+                            android:layout_gravity="start" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/my_text_white_style"
+                            android:textSize="@dimen/font_middle"
+                            android:text="畅易游" />
+                    </LinearLayout>
+
+
+                    <EditText
+                        android:id="@+id/et_message_search"
+                        style="@style/my_editText_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="32dp"
+                        android:layout_marginHorizontal="10dp"
+                        android:background="@drawable/background_et_white_bigger_corner"
+                        android:hint="王者荣耀"
+                        android:textColorHint="#AEAAAA"
+                        android:paddingLeft="30dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+
+
+        <com.example.bugawayme.myRecycleView.MyRecycleView
+            android:id="@+id/rv_home_carousel"
+            android:layout_width="match_parent"
+            android:layout_height="119dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="40dp"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp"
+
+            />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginHorizontal="10dp"
+            >
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tl_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tabMode="scrollable"
+                />
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/vp_home_tabLay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+        <!--    android:clipToPadding="false"
+            android:paddingBottom="8dp"
+           为了让最后一个item也有底边
+            -->
+    </LinearLayout>
+    </ScrollView>
+
+</layout>

@@ -1,4 +1,4 @@
-package com.example.bugawayme.tempTool;
+package com.example.bugawayme.util;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;

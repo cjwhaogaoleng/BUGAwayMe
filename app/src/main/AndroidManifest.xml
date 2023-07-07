@@ -15,25 +15,22 @@
         android:theme="@style/Theme.BUGAwayMe"
         tools:targetApi="31">
         <activity
-            android:name=".tempTool.PersonInformationActivity"
+            android:name=".mineInterface.settingAct.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".tempTool.WebSocketActivity"
+            android:name=".mineInterface.personInforAct.InforNameActivity"
             android:exported="false" />
         <activity
-            android:name=".db.testActivity2"
+            android:name=".mineInterface.personInforAct.PersonInformationActivity"
+            android:exported="true"></activity>
+        <activity
+            android:name=".util.WebSocketActivity"
             android:exported="false" />
         <activity
             android:name=".db.testActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="true" />
         <activity
-            android:name=".tempTool.temp"
+            android:name=".util.temp"
             android:exported="false" />
         <activity
             android:name=".RegisterPassActivity"
@@ -50,7 +47,13 @@
             android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

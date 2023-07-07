@@ -1,6 +1,12 @@
 package com.example.bugawayme.mainFragment;
 
+
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,13 +14,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.bugawayme.MyRecycleViewAdapter;
 import com.example.bugawayme.R;
-import com.example.bugawayme.data.RecycleViewData;
+import com.example.bugawayme.RecycleViewData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +28,14 @@ import java.util.List;
  */
 public class MineFragment extends Fragment {
 
-    private RecyclerView recyclerView1 ,recyclerView2, recyclerView3;
-    View rootView;
+    private RecyclerView recyclerView0, recyclerView1 ,recyclerView2, recyclerView3;
+    private ImageView iv_write;
+    private View rootView;
+
+    private MyRecycleViewAdapter myRecycleViewAdapter0,myRecycleViewAdapter1,myRecycleViewAdapter2
+            , myRecycleViewAdapter3;
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -81,51 +89,99 @@ public class MineFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initView(view);
+        initEvent();
 
     }
 
+
+    private void initEvent() {
+        myRecycleViewAdapter0.setOnItemClickListener(new MyRecycleViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(view.getContext(), "haole ", Toast.LENGTH_SHORT).show();
+                switch (position){
+                    case 0:
+                        break;
+                }
+            }
+        });
+
+        myRecycleViewAdapter1.setOnItemClickListener(new MyRecycleViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(view.getContext(), ""+position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        myRecycleViewAdapter2.setOnItemClickListener(new MyRecycleViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(view.getContext(), ""+position, Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        myRecycleViewAdapter3.setOnItemClickListener(new MyRecycleViewAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(view.getContext(), ""+position, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     private void initView(View view) {
+        recyclerView0 = view.findViewById(R.id.rv_mine0);
         recyclerView1 = view.findViewById(R.id.rv_mine1);
         recyclerView2 = view.findViewById(R.id.rv_mine2);
         recyclerView3 = view.findViewById(R.id.rv_mine3);
+
+        iv_write = view.findViewById(R.id.iv_mine_write);
 
         initRecycleView();
 
     }
 
     private void initRecycleView() {
-        List<RecycleViewData> viewDataList = new ArrayList<>();
-        viewDataList.add(new RecycleViewData(R.drawable.good_1, "出售商品"));
-        viewDataList.add(new RecycleViewData(R.drawable.orderlist, "已完成订单"));
-        viewDataList.add(new RecycleViewData(R.drawable.label, "买家的出价"));
+
+        List<RecycleViewData> viewDataList0 = new ArrayList<>();
+        viewDataList0.add(new RecycleViewData(R.drawable.collect, "收藏"));
+        viewDataList0.add(new RecycleViewData(R.drawable.wallet, "钱包"));
+        viewDataList0.add(new RecycleViewData(R.drawable.foot, "足迹"));
+        viewDataList0.add(new RecycleViewData(R.drawable.after_service, "售后"));
+
+        List<RecycleViewData> viewDataList1 = new ArrayList<>();
+        viewDataList1.add(new RecycleViewData(R.drawable.good_1, "商品交易"));
+        viewDataList1.add(new RecycleViewData(R.drawable.orderlist, "订单"));
 
         List<RecycleViewData> viewDataList2 = new ArrayList<>();
-        viewDataList2.add(new RecycleViewData(R.drawable.goods, "已购买订单"));
-        viewDataList2.add(new RecycleViewData(R.drawable.collect, "收藏订单"));
-        viewDataList2.add(new RecycleViewData(R.drawable.order, "出价订单"));
+        viewDataList2.add(new RecycleViewData(R.drawable.goods, "商品交易"));
+        viewDataList2.add(new RecycleViewData(R.drawable.order, "订单"));
 
         List<RecycleViewData> viewDataList3 = new ArrayList<>();
-        viewDataList3.add(new RecycleViewData(R.drawable.wallet, "钱包"));
-        viewDataList3.add(new RecycleViewData(0, "客服"));
-        viewDataList3.add(new RecycleViewData(0, "举报"));
-        viewDataList3.add(new RecycleViewData(0, "管理员"));
-        viewDataList3.add(new RecycleViewData(0, "设置"));
+        viewDataList3.add(new RecycleViewData(R.drawable.setting, "设置"));
+        viewDataList3.add(new RecycleViewData(R.drawable.earphone, "客服"));
+        viewDataList3.add(new RecycleViewData(R.drawable.report, "举报"));
+        viewDataList3.add(new RecycleViewData(R.drawable.administrator, "管理员"));
 
 
 
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 3);
-        GridLayoutManager gridLayoutManager2 = new GridLayoutManager(getContext(), 3);
+        GridLayoutManager gridLayoutManager0 = new GridLayoutManager(getContext(), 4);
+        GridLayoutManager gridLayoutManager1 = new GridLayoutManager(getContext(), 4);
+        GridLayoutManager gridLayoutManager2 = new GridLayoutManager(getContext(), 4);
         GridLayoutManager gridLayoutManager3 = new GridLayoutManager(getContext(), 4);
 
 
+        myRecycleViewAdapter0 = new MyRecycleViewAdapter(viewDataList0, getContext());
+        myRecycleViewAdapter1 = new MyRecycleViewAdapter(viewDataList1, getContext());
+        myRecycleViewAdapter2 = new MyRecycleViewAdapter(viewDataList2, getContext());
+        myRecycleViewAdapter3 = new MyRecycleViewAdapter(viewDataList3, getContext());
 
-        MyRecycleViewAdapter myRecycleViewAdapter = new MyRecycleViewAdapter(viewDataList, getContext());
-        MyRecycleViewAdapter myRecycleViewAdapter2 = new MyRecycleViewAdapter(viewDataList2, getContext());
-        MyRecycleViewAdapter myRecycleViewAdapter3 = new MyRecycleViewAdapter(viewDataList3, getContext());
 
+        recyclerView0.setAdapter(myRecycleViewAdapter0);
+        recyclerView0.setLayoutManager(gridLayoutManager0);
 
-        recyclerView1.setAdapter(myRecycleViewAdapter);
-        recyclerView1.setLayoutManager(gridLayoutManager);
+        recyclerView1.setAdapter(myRecycleViewAdapter1);
+        recyclerView1.setLayoutManager(gridLayoutManager1);
 
         recyclerView2.setAdapter(myRecycleViewAdapter2);
         recyclerView2.setLayoutManager(gridLayoutManager2);
@@ -133,4 +189,7 @@ public class MineFragment extends Fragment {
         recyclerView3.setAdapter(myRecycleViewAdapter3);
         recyclerView3.setLayoutManager(gridLayoutManager3);
     }
+
+
+
 }

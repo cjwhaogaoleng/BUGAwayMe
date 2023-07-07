@@ -24,7 +24,7 @@
 
     <style name="my_editText_style" >
         <item name="android:textSize" >@dimen/font_middle</item>
-        <item name="android:background">@drawable/background_et</item>
+        <item name="android:background">@drawable/background_et_grey</item>
         <item name="android:height">47dp</item>
         <item name="android:gravity"> center_vertical</item>
     </style>

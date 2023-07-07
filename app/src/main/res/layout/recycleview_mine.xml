@@ -3,13 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:id="@+id/ll_mine1"
+
+    >
 
     <ImageView
         android:id="@+id/iv_rv_mine1"
         android:layout_width="34dp"
         android:layout_height="34dp"
         android:scaleType="centerCrop"
+        android:adjustViewBounds="true"
         />
 <!--        android:src="@drawable/wallet"-->
 

@@ -1,80 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".tempTool.PersonInformationActivity"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    >
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:navigationIcon="@drawable/baseline_arrow_back_24"
-        tools:ignore="MissingConstraints"
-        android:onClick="back"
-        />
+    <data>
+        <variable
+            name="person_information_click"
+            type="android.view.View.OnClickListener" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
+        tools:context=".mineInterface.personInforAct.PersonInformationActivity"
         android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:padding="37dp"
+        android:gravity="center_horizontal">
 
-        >
-    <TextView
-        android:layout_marginTop="50dp"
-        android:layout_width="74dp"
-        android:layout_height="21dp"
-        android:text="个人信息"
-        android:textColor="#ff000000"
-        android:layout_marginBottom="30dp"
-        />
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/baseline_arrow_back_24"
+            tools:ignore="MissingConstraints"
+            android:onClick="back" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="头像"
-        android:layout_marginBottom="10dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="昵称"
-        android:layout_marginBottom="10dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="用户名"
-        android:layout_marginBottom="10dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="手机号"
-        android:layout_marginBottom="10dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="修改密码"
-        android:layout_marginBottom="10dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="绑定邮箱"
-        android:layout_marginBottom="10dp"/>
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="实名认证"
-        android:layout_marginBottom="10dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="37dp"
+
+            >
+
+            <TextView
+                android:layout_width="74dp"
+                android:layout_height="21dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="30dp"
+                android:text="个人信息"
+                android:textColor="#ff000000" />
+
+            <EditText
+                android:id="@+id/et_perInfor_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="头像"
+                android:layout_marginBottom="10dp"
+                android:onClick="@{person_information_click}"
+
+                />
+
+
+
+            <EditText
+                android:id="@+id/et_perInfor_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="昵称"
+                android:layout_marginBottom="10dp"
+                android:onClick="@{person_information_click}"
+
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="用户名"
+                android:layout_marginBottom="10dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="手机号"
+                android:layout_marginBottom="10dp" />
+
 
         </LinearLayout>
 
 
-
-
-</LinearLayout>
+    </LinearLayout>
+</layout>

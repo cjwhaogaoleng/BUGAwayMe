@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.bugawayme.R;
-import com.example.bugawayme.tempTool.MySqliteOpenHelper;
+import com.example.bugawayme.util.MySqliteOpenHelper;
 
 public class testActivity extends AppCompatActivity {
 

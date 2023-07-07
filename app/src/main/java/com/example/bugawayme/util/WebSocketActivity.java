@@ -1,4 +1,4 @@
-package com.example.bugawayme.tempTool;
+package com.example.bugawayme.util;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -107,12 +107,10 @@ public class WebSocketActivity extends AppCompatActivity {
 
             /**
              * 发送消息
-             *
-             * @param msg
              */
             public void sendMsg(String msg) {
                 if (null != client) {
-                    Log.e("", "^_^Websocket发送的消息：-----------------------------------^_^" + msg);
+                    Log.e("", "^_^Websocket发送的消息：" + msg);
                     if (client.isOpen()) {
                         client.send(msg);
                     }

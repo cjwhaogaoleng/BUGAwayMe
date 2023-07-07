@@ -15,31 +15,35 @@ import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.bugawayme.loginFragment.PasswordFragment;
-import com.example.bugawayme.loginFragment.VerificationFragment;
+import com.example.bugawayme.retrofitResponseData.JsonRootBean;
+import com.example.bugawayme.mainFragment.loginFragment.PasswordFragment;
+import com.example.bugawayme.mainFragment.loginFragment.VerificationFragment;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.BindViews;
 import butterknife.ButterKnife;
+import okhttp3.FormBody;
+import okhttp3.MediaType;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    @SuppressLint("NonConstantResourceId")
-//    @BindView(R.id.tv_protocol_login)
-//    TextView tv_protocol_login;
-//    @BindView(R.id.tv_login_password)
-//    TextView tv_password;
-//    @BindView(R.id.tv_login_verification)
-//    TextView tv_verification;
-//    @BindViews({R.id.tv_protocol_login, R.id.tv_login_password, R.id.tv_login_verification})
-//    List<TextView> tv;
+    private static final String TAG = "tag";
+
     TextView tv_protocol_login, tv_password, tv_verification;
 
 
@@ -165,6 +169,45 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.login_bt_login:
                 startActivity(new Intent(this, MainActivity.class));
+//                Login();
         }
+    }
+
+    private void Login() {
+        new Thread(() -> {
+            Retrofit retrofit = new Retrofit.Builder()
+                    .baseUrl(" http://192.168.78.161:8000/user/")
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build();
+//
+            JSONObject object = new JSONObject();
+            try {
+
+                object.put("username", "JohnDow");
+                object.put("password", "mypassword");
+
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+            RequestBody body = FormBody.create(MediaType.parse("Content-Type:application/json "), object.toString());
+            //RequestBody requestBody = RequestBody.create(MediaType.parse("Content-Type:application/json"), object.toString());
+
+            Call<JsonRootBean> rootBeanCall = retrofit.create(AppService.class).login(body);
+
+            try {
+                Response<JsonRootBean> response = rootBeanCall.execute();
+//                String decode = URLDecoder.decode(response.body().string(), "UTF-8");
+//                GsonConverterFactory gsonConverterFactory = GsonConverterFactory.create();
+
+                Log.d(TAG, "up: " + response);
+                if (response.body() != null) {
+                    Log.d(TAG, "up: " + response.body().toString());
+//                    Log.d(TAG, "up2: " + decode)
+                }
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        }).start();
     }
 }

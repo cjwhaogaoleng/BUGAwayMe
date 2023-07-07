@@ -9,6 +9,7 @@
         android:title="交易"
         android:id="@+id/main_menu_shopping"
         android:icon="@drawable/selector_main_menu_shop" />
+
     <item
         android:title="消息"
         android:id="@+id/main_menu_message"

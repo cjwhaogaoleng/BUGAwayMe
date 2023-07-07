@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <androidx.viewpager2.widget.ViewPager2
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp_main"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -17,11 +17,9 @@
         android:id="@+id/main_bt_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:menu="@menu/main_bottom_navigation"
-        app:labelVisibilityMode="labeled"
+        android:layout_marginHorizontal="28dp"
         android:background="@drawable/background_main_navigation_light_grey"
         app:itemTextAppearanceActive="@color/orange"
-        android:layout_marginHorizontal="10dp"
-        />
-
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/main_bottom_navigation" />
 </LinearLayout>

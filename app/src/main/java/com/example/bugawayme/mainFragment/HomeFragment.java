@@ -1,14 +1,32 @@
 package com.example.bugawayme.mainFragment;
 
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.bugawayme.MyRecycleViewCarouselAdapter;
+import com.example.bugawayme.myViewPager.BannerViewPager;
+import com.example.bugawayme.myViewPager.CompatibleViewPager;
+import com.example.bugawayme.MyFragmentPagerTabAdapter;
 import com.example.bugawayme.R;
+import com.example.bugawayme.mainFragment.homeFragment.TableChildYSFragment;
+import com.google.android.material.tabs.TabLayout;
+import com.mig35.carousellayoutmanager.CarouselLayoutManager;
+import com.mig35.carousellayoutmanager.CarouselZoomPostLayoutListener;
+import com.mig35.carousellayoutmanager.CenterScrollListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -17,15 +35,24 @@ import com.example.bugawayme.R;
  */
 public class HomeFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+
     private String mParam1;
     private String mParam2;
     private View rootView;
+    private ViewPager vp;
+    private RecyclerView recyclerView;
+    private TabLayout tabLayout;
+
+    private List<Fragment> fragmentList;
+    private List<Integer> carouselList;
+    private List<Uri> carouselUriList;
+
+    private MyFragmentPagerTabAdapter fragmentPagerTableAdapter;
+    private List<String> titles;
+
 
     public HomeFragment() {
         // Required empty public constructor
@@ -64,8 +91,84 @@ public class HomeFragment extends Fragment {
         if (rootView==null) {
             rootView = inflater.inflate(R.layout.fragment_home, container, false);
         }
-        initView();
+
         return rootView;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        vp = view.findViewById(R.id.vp_home_tabLay);
+        recyclerView = view.findViewById(R.id.rv_home_carousel);
+        tabLayout = view.findViewById(R.id.tl_home);
+
+        initView();
+        initData();
+
+        fragmentPagerTableAdapter = new MyFragmentPagerTabAdapter(getChildFragmentManager(), fragmentList, titles);
+        vp.setAdapter(fragmentPagerTableAdapter);
+        tabLayout.setupWithViewPager(vp);
+
+        final CarouselLayoutManager layoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
+        MyRecycleViewCarouselAdapter carouselAdapter = new MyRecycleViewCarouselAdapter(carouselList, carouselUriList, view.getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        //固定大小
+        recyclerView.setHasFixedSize(true);
+        //缩放
+        layoutManager.setPostLayoutListener(new CarouselZoomPostLayoutListener());
+        recyclerView.setAdapter(carouselAdapter);
+        //中心滚动
+        recyclerView.addOnScrollListener(new CenterScrollListener());
+
+
+        carouselAdapter.setOnItemClickListener(new MyRecycleViewCarouselAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(view.getContext(),
+                        "i love", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+
+    private void initData() {
+        fragmentList = new ArrayList<>();
+        TableChildYSFragment fragment1 = TableChildYSFragment.newInstance("原神", "");
+        TableChildYSFragment fragment2 = TableChildYSFragment.newInstance("王者荣耀", "");
+        TableChildYSFragment fragment3 = TableChildYSFragment.newInstance("绝地求生", "");
+        TableChildYSFragment fragment4 = TableChildYSFragment.newInstance("穿越火线", "");
+        TableChildYSFragment fragment5 = TableChildYSFragment.newInstance("地铁跑酷", "");
+
+        fragmentList.add(fragment1);
+        fragmentList.add(fragment2);
+        fragmentList.add(fragment3);
+        fragmentList.add(fragment4);
+        fragmentList.add(fragment5);
+
+        titles = new ArrayList<>();
+        titles.add("原神");
+        titles.add("王者荣耀");
+        titles.add("绝地求生");
+        titles.add("穿越火线");
+        titles.add("地铁跑酷");
+
+
+        carouselUriList = new ArrayList<>();
+
+        String uri[] = {"https://www.figma.com/file/h3NsCnS96Ge64qHAGOQeX2/UI%E8%AE%BE%E8%AE%A1?type=design&node-id=222-305&mode=dev",
+                "https://www.figma.com/file/h3NsCnS96Ge64qHAGOQeX2/UI%E8%AE%BE%E8%AE%A1?type=design&node-id=222-307&mode=dev",
+                "https://www.figma.com/file/h3NsCnS96Ge64qHAGOQeX2/UI%E8%AE%BE%E8%AE%A1?type=design&node-id=222-306&mode=dev"};
+        carouselUriList.add(Uri.parse(uri[0]));
+        carouselUriList.add(Uri.parse(uri[1]));
+        carouselUriList.add(Uri.parse(uri[2]));
+
+        carouselList = new ArrayList<>();
+        carouselList.add(R.drawable.pic_carousel1);
+        carouselList.add(R.drawable.pic_carousel2);
+        carouselList.add(R.drawable.pic_carousel3);
+
     }
 
     private void initView() {
