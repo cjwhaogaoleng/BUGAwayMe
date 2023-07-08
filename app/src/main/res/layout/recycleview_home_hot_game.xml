@@ -6,8 +6,8 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/iv_home_carousel"
-        android:scaleType="centerCrop"/>
+        android:id="@+id/iv_home_hot_game"
+        android:scaleType="center"/>
 
 
 

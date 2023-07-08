@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.bugawayme.MyRecycleViewCarouselAdapter;
 import com.example.bugawayme.R;
@@ -24,16 +26,19 @@ import java.util.List;
  * Use the {@link TableChildYSFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TableChildYSFragment extends Fragment {
+public class TableChildYSFragment extends Fragment implements MyRecycleViewCarouselAdapter.OnItemClickListener {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+
+    View root;
 
     private TextView tv;
     //recycleVIew的相关变量
     private RecyclerView recyclerView;
     private List<Integer> dataList;
-    private MyRecycleViewCarouselAdapter myRecycleAdapter;
+
+    private MyRecycleViewCarouselAdapter carouselAdapter;
 
 
     private String mParam1;
@@ -74,7 +79,10 @@ public class TableChildYSFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_table_child_y_s, container, false);
+        if (root==null) {
+            root = inflater.inflate(R.layout.fragment_table_child_y_s, container, false);
+        }
+        return root;
     }
 
 
@@ -87,12 +95,14 @@ public class TableChildYSFragment extends Fragment {
         initData();
         initEvent();
 
-        recyclerView.setAdapter(new MyRecycleViewCarouselAdapter(dataList, null, view.getContext()));
-        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
+        carouselAdapter = new MyRecycleViewCarouselAdapter(dataList, null, view.getContext());
+        recyclerView.setAdapter(carouselAdapter);
+        recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 1));
+        carouselAdapter.setOnItemClickListener(this);
+
     }
 
     private void initEvent() {
-
     }
 
     private void initData() {
@@ -108,5 +118,10 @@ public class TableChildYSFragment extends Fragment {
         tv.setText(mParam1);
         recyclerView = view.findViewById(R.id.rv_home_child_y);
 
+    }
+
+    @Override
+    public void onItemClick(View view, int position) {
+        Toast.makeText(view.getContext(), "tah"+""+position, Toast.LENGTH_SHORT).show();
     }
 }

@@ -6,16 +6,13 @@ import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
-public class MyRecycleViewCarouselAdapter extends RecyclerView.Adapter<MyRecycleViewCarouselAdapter.MyViewHolder> {
+public class MyRecycleViewMineHotGameAdapter extends RecyclerView.Adapter<MyRecycleViewMineHotGameAdapter.MyViewHolder> {
 
     List<Integer> data;
     List<Uri> dataUri;
@@ -23,7 +20,7 @@ public class MyRecycleViewCarouselAdapter extends RecyclerView.Adapter<MyRecycle
 
 
 
-    public MyRecycleViewCarouselAdapter(List<Integer> data,List<Uri> dataUri, Context context) {
+    public MyRecycleViewMineHotGameAdapter(List<Integer> data, List<Uri> dataUri, Context context) {
         this.dataUri = dataUri;
         this.data = data;
         this.context = context;
@@ -31,8 +28,8 @@ public class MyRecycleViewCarouselAdapter extends RecyclerView.Adapter<MyRecycle
 
     @NonNull
     @Override
-    public MyRecycleViewCarouselAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = View.inflate(context, R.layout.recycleview_home_carousel, null);
+    public MyRecycleViewMineHotGameAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = View.inflate(context, R.layout.recycleview_home_hot_game, null);
         if (view == null) {
             throw new NullPointerException("Failed to inflate view");
         }
@@ -40,7 +37,7 @@ public class MyRecycleViewCarouselAdapter extends RecyclerView.Adapter<MyRecycle
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyRecycleViewCarouselAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyRecycleViewMineHotGameAdapter.MyViewHolder holder, int position) {
 //        holder.imageView.setBackgroundResource(data.get(position).getImageViewResource());
         if (data!=null) {
             holder.imageView.setImageResource(data.get(position));
@@ -65,7 +62,7 @@ public class MyRecycleViewCarouselAdapter extends RecyclerView.Adapter<MyRecycle
 
         public MyViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.iv_home_carousel);
+            imageView = itemView.findViewById(R.id.iv_home_hot_game);
 
 
 //            if (mListener != null) {

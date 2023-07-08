@@ -5,9 +5,9 @@
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/iv_home_carousel"
-        android:scaleType="centerCrop"/>
+        android:layout_height="120dp"
+        android:id="@+id/iv_home_bottom"
+        android:scaleType="center"/>
 
 
 

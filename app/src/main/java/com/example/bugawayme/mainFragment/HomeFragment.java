@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -15,6 +16,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.bugawayme.MyRecycleViewCarouselAdapter;
+import com.example.bugawayme.MyRecycleViewMineBottomAdapter;
+import com.example.bugawayme.MyRecycleViewMineHotGameAdapter;
 import com.example.bugawayme.myViewPager.BannerViewPager;
 import com.example.bugawayme.myViewPager.CompatibleViewPager;
 import com.example.bugawayme.MyFragmentPagerTabAdapter;
@@ -43,14 +46,20 @@ public class HomeFragment extends Fragment {
     private String mParam2;
     private View rootView;
     private ViewPager vp;
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerView , recyclerViewHotGame;
     private TabLayout tabLayout;
 
     private List<Fragment> fragmentList;
     private List<Integer> carouselList;
+    private List<Integer> hotGameList;
+
     private List<Uri> carouselUriList;
 
     private MyFragmentPagerTabAdapter fragmentPagerTableAdapter;
+    private MyRecycleViewCarouselAdapter carouselAdapter;
+    private MyRecycleViewMineHotGameAdapter hotGameAdapter;
+
+
     private List<String> titles;
 
 
@@ -99,19 +108,20 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        vp = view.findViewById(R.id.vp_home_tabLay);
-        recyclerView = view.findViewById(R.id.rv_home_carousel);
-        tabLayout = view.findViewById(R.id.tl_home);
 
-        initView();
+
+        initView(view);
         initData();
 
+//        tab的初始化
         fragmentPagerTableAdapter = new MyFragmentPagerTabAdapter(getChildFragmentManager(), fragmentList, titles);
         vp.setAdapter(fragmentPagerTableAdapter);
         tabLayout.setupWithViewPager(vp);
 
+
+//        自动滚轮的初始化
         final CarouselLayoutManager layoutManager = new CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL);
-        MyRecycleViewCarouselAdapter carouselAdapter = new MyRecycleViewCarouselAdapter(carouselList, carouselUriList, view.getContext());
+        carouselAdapter = new MyRecycleViewCarouselAdapter(carouselList, carouselUriList, view.getContext());
         recyclerView.setLayoutManager(layoutManager);
         //固定大小
         recyclerView.setHasFixedSize(true);
@@ -120,6 +130,12 @@ public class HomeFragment extends Fragment {
         recyclerView.setAdapter(carouselAdapter);
         //中心滚动
         recyclerView.addOnScrollListener(new CenterScrollListener());
+
+
+//hotGame的初始化
+        hotGameAdapter = new MyRecycleViewMineHotGameAdapter(hotGameList, null, view.getContext());
+        recyclerViewHotGame.setAdapter(hotGameAdapter);
+        recyclerViewHotGame.setLayoutManager(new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false));
 
 
         carouselAdapter.setOnItemClickListener(new MyRecycleViewCarouselAdapter.OnItemClickListener() {
@@ -169,9 +185,20 @@ public class HomeFragment extends Fragment {
         carouselList.add(R.drawable.pic_carousel2);
         carouselList.add(R.drawable.pic_carousel3);
 
+
+        hotGameList = new ArrayList<>();
+        hotGameList.add(R.drawable.background_et_grey);
+        hotGameList.add(R.drawable.background_et_grey);
+        hotGameList.add(R.drawable.background_et_grey);
+        hotGameList.add(R.drawable.background_et_grey);
+        hotGameList.add(R.drawable.background_et_grey);
+        hotGameList.add(R.drawable.background_et_grey);
     }
 
-    private void initView() {
-
+    private void initView(View v) {
+        vp = v.findViewById(R.id.vp_home_tabLay);
+        recyclerView = v.findViewById(R.id.rv_home_carousel);
+        tabLayout = v.findViewById(R.id.tl_home);
+        recyclerViewHotGame = v.findViewById(R.id.rv_home_hot_game);
     }
 }
