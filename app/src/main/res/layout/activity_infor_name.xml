@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mineInterface.personInforAct.InforNameActivity"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:navigationIcon="@drawable/baseline_arrow_back_24"
+            tools:ignore="MissingConstraints"
+            android:onClick="back" />
+
+<!--        top 100-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="21dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
+            android:text="昵称"
+            android:textColor="#ff000000" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/my_editText_style"
+            android:hint="请输入昵称"
+            android:paddingLeft="20dp"
+            android:layout_marginHorizontal="33dp"/>
+
+        <Button
+            android:id="@+id/login_bt_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="30dp"
+            android:layout_marginTop="26dp"
+            style="@style/my_button_style"
+            android:text="确认"
+            android:layout_gravity="center_horizontal"
+            />
+
+    </LinearLayout>
