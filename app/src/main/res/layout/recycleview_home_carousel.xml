@@ -4,10 +4,11 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="270dp"
         android:layout_height="wrap_content"
         android:id="@+id/iv_home_carousel"
-        android:scaleType="centerCrop"/>
+        android:scaleType="center"
+        />
 
 
 

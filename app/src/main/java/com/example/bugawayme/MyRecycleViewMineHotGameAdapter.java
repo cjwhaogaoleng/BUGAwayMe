@@ -40,8 +40,8 @@ public class MyRecycleViewMineHotGameAdapter extends RecyclerView.Adapter<MyRecy
     public void onBindViewHolder(@NonNull MyRecycleViewMineHotGameAdapter.MyViewHolder holder, int position) {
 //        holder.imageView.setBackgroundResource(data.get(position).getImageViewResource());
         if (data!=null) {
-            holder.imageView.setImageResource(data.get(position));
-//            holder.imageView.setBackgroundResource(data.get(position));
+//            holder.imageView.setImageResource(data.get(position));
+            holder.imageView.setBackgroundResource(data.get(position));
         } else if (dataUri!=null) {
             holder.imageView.setImageURI(dataUri.get(position));
         }

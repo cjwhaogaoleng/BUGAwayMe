@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -132,10 +133,14 @@ public class HomeFragment extends Fragment {
         recyclerView.addOnScrollListener(new CenterScrollListener());
 
 
+
+
 //hotGame的初始化
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(view.getContext(), 6);
+//        new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false)
         hotGameAdapter = new MyRecycleViewMineHotGameAdapter(hotGameList, null, view.getContext());
         recyclerViewHotGame.setAdapter(hotGameAdapter);
-        recyclerViewHotGame.setLayoutManager(new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false));
+        recyclerViewHotGame.setLayoutManager(gridLayoutManager);
 
 
         carouselAdapter.setOnItemClickListener(new MyRecycleViewCarouselAdapter.OnItemClickListener() {

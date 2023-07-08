@@ -15,7 +15,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.bugawayme.MyRecycleViewAdapter;
 import com.example.bugawayme.MyRecycleViewCarouselAdapter;
+import com.example.bugawayme.MyRecycleViewMineBottomAdapter;
 import com.example.bugawayme.R;
 
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ import java.util.List;
  * Use the {@link TableChildYSFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class TableChildYSFragment extends Fragment implements MyRecycleViewCarouselAdapter.OnItemClickListener {
+public class TableChildYSFragment extends Fragment implements MyRecycleViewMineBottomAdapter.OnItemClickListener {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -38,7 +40,7 @@ public class TableChildYSFragment extends Fragment implements MyRecycleViewCarou
     private RecyclerView recyclerView;
     private List<Integer> dataList;
 
-    private MyRecycleViewCarouselAdapter carouselAdapter;
+    private MyRecycleViewMineBottomAdapter bottomAdapter;
 
 
     private String mParam1;
@@ -95,10 +97,10 @@ public class TableChildYSFragment extends Fragment implements MyRecycleViewCarou
         initData();
         initEvent();
 
-        carouselAdapter = new MyRecycleViewCarouselAdapter(dataList, null, view.getContext());
-        recyclerView.setAdapter(carouselAdapter);
+        bottomAdapter = new MyRecycleViewMineBottomAdapter(dataList, view.getContext());
+        recyclerView.setAdapter(bottomAdapter);
         recyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 1));
-        carouselAdapter.setOnItemClickListener(this);
+        bottomAdapter.setOnItemClickListener(this);
 
     }
 

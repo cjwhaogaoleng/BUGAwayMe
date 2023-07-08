@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rl_message"
     android:layout_width="match_parent"
-    android:layout_height="65dp"
+    android:layout_height="75dp"
     android:gravity="center"
     android:layout_marginTop="20dp"
     android:paddingBottom="13dp"
@@ -22,13 +22,13 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="58dp"
             android:layout_weight="1"
             android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="56dp"
+                android:layout_height="58dp"
                 android:layout_weight="1"
                 android:clipChildren="false"
                 android:orientation="vertical">
@@ -49,6 +49,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
                     android:layout_marginTop="7dp"
+                    android:layout_marginBottom="3dp"
                     android:layout_toRightOf="@id/iv_rv_message"
                     android:text="畅易游版本更新"
                     android:textSize="12sp" />
@@ -88,12 +89,13 @@
 
 
         </LinearLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_gravity="end"
-                    android:background="@color/color_grey_et_background" />
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:layout_marginLeft="12dp"-->
+<!--                    android:layout_gravity="end"-->
+<!--                    android:paddingTop="120dp"-->
+<!--                    android:background="@color/color_grey_et_background" />-->
 
     </LinearLayout>
 

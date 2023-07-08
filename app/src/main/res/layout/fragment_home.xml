@@ -91,7 +91,7 @@
         <com.example.bugawayme.myRecycleView.MyRecycleView
             android:id="@+id/rv_home_carousel"
             android:layout_width="match_parent"
-            android:layout_height="119dp"
+            android:layout_height="130dp"
             android:layout_marginHorizontal="10dp"
             android:layout_marginTop="40dp"
             android:clipToPadding="false"
@@ -150,9 +150,12 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_home_hot_game"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginTop="13dp"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp" />
+                    android:layout_marginHorizontal="25dp"
+                    android:layout_height="50dp"
+
+                    />
 
         </LinearLayout>
 

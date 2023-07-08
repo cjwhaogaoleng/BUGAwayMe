@@ -1,7 +1,11 @@
 package com.example.bugawayme.mainFragment;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -9,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.bugawayme.R;
+import com.example.bugawayme.databinding.FragmentHomeBinding;
+import com.example.bugawayme.databinding.FragmentShopBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -18,6 +24,7 @@ import com.example.bugawayme.R;
 public class ShopFragment extends Fragment {
 
     View rootView;
+    FragmentShopBinding shopBinding;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -62,11 +69,26 @@ public class ShopFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        if (rootView==null) {
-            rootView = inflater.inflate(R.layout.fragment_shop, container, false);
+        if (shopBinding==null) {
+            shopBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shop, container, false);
         }
+        return shopBinding.getRoot();
+    }
+
+    private void initData() {
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         initView();
-        return rootView;
+        initData();
+
+        Drawable drawable = getResources().getDrawable(R.drawable.ic_magnifier);
+        drawable.setBounds(-40, 0, 10, 50);
+        shopBinding.etShopSearch.setCompoundDrawables(drawable, null, null, null);
     }
 
     private void initView() {

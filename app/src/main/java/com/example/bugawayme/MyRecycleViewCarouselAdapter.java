@@ -6,14 +6,12 @@ import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MyRecycleViewCarouselAdapter extends RecyclerView.Adapter<MyRecycleViewCarouselAdapter.MyViewHolder> {
 
@@ -43,8 +41,8 @@ public class MyRecycleViewCarouselAdapter extends RecyclerView.Adapter<MyRecycle
     public void onBindViewHolder(@NonNull MyRecycleViewCarouselAdapter.MyViewHolder holder, int position) {
 //        holder.imageView.setBackgroundResource(data.get(position).getImageViewResource());
         if (data!=null) {
-            holder.imageView.setImageResource(data.get(position));
-//            holder.imageView.setBackgroundResource(data.get(position));
+//            holder.imageView.setImageResource(data.get(position));
+            holder.imageView.setBackgroundResource(data.get(position));
         } else if (dataUri!=null) {
             holder.imageView.setImageURI(dataUri.get(position));
         }
